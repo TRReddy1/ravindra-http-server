@@ -52,10 +52,10 @@ app.get("/status/:code", (req, res) => {
   const statuscode = parseInt(req.params.code);
   const statuscodes = [100, 200, 300, 400, 500];
 
-  const hasCode = statuscodes.find((code) => code === statuscode);
+  // const hasCode = statuscodes.find((code) => code === statuscode);
 
-  if (hasCode) {
-    res.status(hasCode).json(hasCode);
+  if (statuscodes.includes(statuscode)) {
+    res.status(statuscode).json({ statuscode: statuscode });
   } else {
     res.status(404).json({ error: "status code not matched" });
   }
